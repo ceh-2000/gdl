@@ -1,0 +1,472 @@
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2024-02-20 13:40:07.651888
+[*] Loaded dataset 'HCPAge' from 'PyG-NeuroGraphDataset':
+  Data(x=[1065000, 1000], edge_index=[2, 48551656], y=[1065])
+  undirected: True
+  num graphs: 1065
+  avg num_nodes/graph: 1000
+  num node features: 1000
+  num edge features: 1
+  num classes: 3
+Precomputing Positional Encoding statistics: ['EquivStableLapPE'] for all graphs...
+  ...estimated to be undirected: True
+Done! Took 00:04:48.49
+Adding expander edges (round 0) ...
+Done! Took 00:01:21.70
+GraphGymModule(
+  (model): MultiModel(
+    (encoder): FeatureEncoder(
+      (node_encoder): Concat2NodeEncoder(
+        (encoder1): LinearNodeEncoder(
+          (encoder): Linear(in_features=1000, out_features=64, bias=True)
+        )
+        (encoder2): EquivStableLapPENodeEncoder(
+          (linear_encoder_eigenvec): Linear(in_features=8, out_features=64, bias=True)
+        )
+      )
+      (edge_encoder): LinearEdgeEncoder(
+        (encoder): Linear(in_features=1, out_features=64, bias=True)
+      )
+      (exp_edge_fixer): ExpanderEdgeFixer(
+        (exp_edge_attr): Embedding(1, 64)
+        (virt_node_emb): Embedding(1, 64)
+        (virt_edge_out_emb): Embedding(1, 64)
+        (virt_edge_in_emb): Embedding(1, 64)
+      )
+    )
+    (layers): Sequential(
+      (0): MultiLayer(
+        summary: dim_h=64, local_gnn_type=['CustomGatedGCN', 'Exphormer'], heads=4
+        (models): ModuleList(
+          (0): LocalModel(
+            (local_model): GatedGCNLayer()
+            (norm1_local): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (dropout_local): Dropout(p=0.1, inplace=False)
+          )
+          (1): GlobalModel(
+            (self_attn): ExphormerAttention(
+              (Q): Linear(in_features=64, out_features=64, bias=False)
+              (K): Linear(in_features=64, out_features=64, bias=False)
+              (E): Linear(in_features=64, out_features=64, bias=False)
+              (V): Linear(in_features=64, out_features=64, bias=False)
+            )
+            (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (dropout_attn): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.1, inplace=False)
+        (ff_dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): MultiLayer(
+        summary: dim_h=64, local_gnn_type=['CustomGatedGCN', 'Exphormer'], heads=4
+        (models): ModuleList(
+          (0): LocalModel(
+            (local_model): GatedGCNLayer()
+            (norm1_local): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (dropout_local): Dropout(p=0.1, inplace=False)
+          )
+          (1): GlobalModel(
+            (self_attn): ExphormerAttention(
+              (Q): Linear(in_features=64, out_features=64, bias=False)
+              (K): Linear(in_features=64, out_features=64, bias=False)
+              (E): Linear(in_features=64, out_features=64, bias=False)
+              (V): Linear(in_features=64, out_features=64, bias=False)
+            )
+            (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (dropout_attn): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.1, inplace=False)
+        (ff_dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): MultiLayer(
+        summary: dim_h=64, local_gnn_type=['CustomGatedGCN', 'Exphormer'], heads=4
+        (models): ModuleList(
+          (0): LocalModel(
+            (local_model): GatedGCNLayer()
+            (norm1_local): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (dropout_local): Dropout(p=0.1, inplace=False)
+          )
+          (1): GlobalModel(
+            (self_attn): ExphormerAttention(
+              (Q): Linear(in_features=64, out_features=64, bias=False)
+              (K): Linear(in_features=64, out_features=64, bias=False)
+              (E): Linear(in_features=64, out_features=64, bias=False)
+              (V): Linear(in_features=64, out_features=64, bias=False)
+            )
+            (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (dropout_attn): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.1, inplace=False)
+        (ff_dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (post_mp): GNNGraphHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): GeneralMultiLayer(
+            (Layer_0): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(64, 64, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+          )
+          (1): Linear(
+            (model): Linear(64, 3, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+accelerator: cuda
+benchmark: False
+bn:
+  eps: 1e-05
+  mom: 0.1
+cfg_dest: config.yaml
+custom_metrics: []
+dataset:
+  cache_load: False
+  cache_save: False
+  dir: ./datasets
+  edge_dim: 128
+  edge_encoder: True
+  edge_encoder_bn: False
+  edge_encoder_name: LinearEdge
+  edge_encoder_num_types: 0
+  edge_message_ratio: 0.8
+  edge_negative_sampling_ratio: 1.0
+  edge_train_mode: all
+  encoder: True
+  encoder_bn: True
+  encoder_dim: 128
+  encoder_name: db
+  format: PyG-NeuroGraphDataset
+  infer_link_label: None
+  label_column: none
+  label_table: none
+  location: local
+  name: HCPAge
+  node_encoder: True
+  node_encoder_bn: False
+  node_encoder_name: LinearNode+EquivStableLapPE
+  node_encoder_num_types: 0
+  remove_feature: False
+  resample_disjoint: False
+  resample_negative: False
+  shuffle_split: True
+  slic_compactness: 10
+  split: [0.8, 0.1, 0.1]
+  split_dir: ./splits
+  split_index: 0
+  split_mode: random
+  task: graph
+  task_type: classification
+  to_undirected: False
+  transductive: False
+  transform: none
+  tu_simple: True
+devices: 1
+example_arg: example
+example_group:
+  example_arg: example
+gnn:
+  act: relu
+  agg: mean
+  att_final_linear: False
+  att_final_linear_bn: False
+  att_heads: 1
+  batchnorm: False
+  clear_feature: True
+  dim_inner: 64
+  dropout: 0.1
+  head: graph
+  keep_edge: 0.5
+  l2norm: True
+  layer_type: generalconv
+  layers_mp: 2
+  layers_post_mp: 2
+  layers_pre_mp: 0
+  msg_direction: single
+  normalize_adj: False
+  residual: False
+  self_msg: concat
+  skip_every: 1
+  stage_type: stack
+gpu_mem: False
+graphormer:
+  attention_dropout: 0.0
+  dropout: 0.0
+  embed_dim: 80
+  input_dropout: 0.0
+  mlp_dropout: 0.0
+  num_heads: 4
+  num_layers: 6
+  use_graph_token: True
+gt:
+  activation: relu
+  attn_dropout: 0.1
+  batch_norm: True
+  bigbird:
+    add_cross_attention: False
+    attention_type: block_sparse
+    block_size: 3
+    chunk_size_feed_forward: 0
+    hidden_act: relu
+    is_decoder: False
+    layer_norm_eps: 1e-06
+    max_position_embeddings: 128
+    num_random_blocks: 3
+    use_bias: False
+  dim_edge: 64
+  dim_hidden: 64
+  dropout: 0.1
+  full_graph: True
+  gamma: 1e-05
+  layer_norm: False
+  layer_type: CustomGatedGCN+Exphormer
+  layers: 3
+  n_heads: 4
+  pna_degrees: []
+  residual: True
+  secondary_edges: full_graph
+mem:
+  inplace: False
+metric_agg: argmax
+metric_best: accuracy
+model:
+  edge_decoding: dot
+  graph_pooling: mean
+  loss_fun: cross_entropy
+  match_upper: True
+  size_average: mean
+  thresh: 0.5
+  type: MultiModel
+name_tag: 
+num_threads: 6
+num_workers: 0
+optim:
+  base_lr: 0.001
+  batch_accumulation: 1
+  clip_grad_norm: True
+  clip_grad_norm_value: 1.0
+  lr_decay: 0.1
+  max_epoch: 10
+  min_lr: 0.0
+  momentum: 0.9
+  num_warmup_epochs: 3
+  optimizer: adamW
+  reduce_factor: 0.1
+  schedule_patience: 10
+  scheduler: cosine_with_warmup
+  steps: [30, 60, 90]
+  weight_decay: 1e-05
+out_dir: results\neural-Age
+posenc_ERE:
+  accuracy: 0.1
+  dim_pe: 16
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_ERN:
+  accuracy: 0.1
+  dim_pe: 16
+  enable: False
+  er_dim: none
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_ElstaticSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: range(10)
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_EquivStableLapPE:
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: none
+    max_freqs: 8
+  enable: True
+  raw_norm_type: none
+posenc_GraphormerBias:
+  dim_pe: 0
+  enable: False
+  node_degrees_only: False
+  num_in_degrees: None
+  num_out_degrees: None
+  num_spatial_types: None
+posenc_HKdiagSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: 
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_LapPE:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_RWSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: 
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_SignNet:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  phi_hidden_dim: 64
+  phi_out_dim: 4
+  post_layers: 0
+  raw_norm_type: none
+prep:
+  add_edge_index: True
+  add_reverse_edges: True
+  add_self_loops: False
+  dist_cutoff: 510
+  dist_enable: False
+  exp: True
+  exp_algorithm: Random-d
+  exp_count: 1
+  exp_deg: 5
+  exp_max_num_iters: 100
+  layer_edge_indices_dir: None
+  num_virt_node: 1
+  train_percent: 0.6
+  use_exp_edges: True
+pretrained:
+  dir: 
+  freeze_main: False
+  reset_prediction_head: True
+print: both
+round: 5
+run_dir: results\neural-Age\0
+run_id: 0
+run_multiple_splits: []
+seed: 0
+share:
+  dim_in: 1000
+  dim_out: 3
+  num_splits: 3
+tensorboard_agg: True
+tensorboard_each_run: True
+train:
+  auto_resume: False
+  batch_size: 16
+  ckpt_best: False
+  ckpt_clean: True
+  ckpt_period: 100
+  enable_ckpt: True
+  epoch_resume: -1
+  eval_period: 1
+  iter_per_epoch: 32
+  mode: custom
+  neighbor_sizes: [20, 15, 10, 5]
+  node_per_graph: 32
+  radius: extend
+  sample_node: False
+  sampler: full_batch
+  skip_train_eval: False
+  walk_length: 4
+val:
+  node_per_graph: 32
+  radius: extend
+  sample_node: False
+  sampler: full_batch
+view_emb: False
+wandb:
+  entity: gtransformers
+  name: 
+  project: neural
+  use: False
+Num parameters: 233158
+Start from epoch 0
+train: {'epoch': 0, 'time_epoch': 1363.54533, 'eta': 12271.90801, 'eta_hours': 3.40886, 'loss': 1.11467545, 'lr': 0.0, 'params': 233158, 'time_iter': 25.25084, 'accuracy': 0.22418, 'f1': 0.20771, 'auc': 0.46414}
+...computing epoch stats took: 0.26s
+val: {'epoch': 0, 'time_epoch': 91.5703, 'loss': 1.11029489, 'lr': 0, 'params': 233158, 'time_iter': 13.08147, 'accuracy': 0.27358, 'f1': 0.23307, 'auc': 0.40984}
+...computing epoch stats took: 0.02s
+test: {'epoch': 0, 'time_epoch': 110.75387, 'loss': 1.10129182, 'lr': 0, 'params': 233158, 'time_iter': 15.82198, 'accuracy': 0.31776, 'f1': 0.28284, 'auc': 0.51385}
+...computing epoch stats took: 0.02s
+> Epoch 0: took 1566.2s (avg 1566.2s) | Best so far: epoch 0	train_loss: 1.1147 train_accuracy: 0.2242	val_loss: 1.1103 val_accuracy: 0.2736	test_loss: 1.1013 test_accuracy: 0.3178
+train: {'epoch': 1, 'time_epoch': 2199.92035, 'eta': 14253.86272, 'eta_hours': 3.95941, 'loss': 1.07860017, 'lr': 0.00033333, 'params': 233158, 'time_iter': 40.73927, 'accuracy': 0.40141, 'f1': 0.35093, 'auc': 0.54923}
+...computing epoch stats took: 0.02s
+val: {'epoch': 1, 'time_epoch': 91.46539, 'loss': 1.05762855, 'lr': 0, 'params': 233158, 'time_iter': 13.06648, 'accuracy': 0.43396, 'f1': 0.31467, 'auc': 0.62942}
+...computing epoch stats took: 0.02s
+test: {'epoch': 1, 'time_epoch': 110.66893, 'loss': 1.08493008, 'lr': 0, 'params': 233158, 'time_iter': 15.80985, 'accuracy': 0.45794, 'f1': 0.39594, 'auc': 0.52786}
+...computing epoch stats took: 0.01s
+> Epoch 1: took 2402.1s (avg 1984.1s) | Best so far: epoch 1	train_loss: 1.0786 train_accuracy: 0.4014	val_loss: 1.0576 val_accuracy: 0.4340	test_loss: 1.0849 test_accuracy: 0.4579
+train: {'epoch': 2, 'time_epoch': 2214.88254, 'eta': 13482.81251, 'eta_hours': 3.74523, 'loss': 1.04535089, 'lr': 0.00066667, 'params': 233158, 'time_iter': 41.01634, 'accuracy': 0.46714, 'f1': 0.33579, 'auc': 0.59888}
+...computing epoch stats took: 0.02s
+val: {'epoch': 2, 'time_epoch': 91.43079, 'loss': 1.08953633, 'lr': 0, 'params': 233158, 'time_iter': 13.06154, 'accuracy': 0.26415, 'f1': 0.1393, 'auc': 0.59721}
+...computing epoch stats took: 0.02s
+test: {'epoch': 2, 'time_epoch': 110.7228, 'loss': 1.10921701, 'lr': 0, 'params': 233158, 'time_iter': 15.81754, 'accuracy': 0.3271, 'f1': 0.16432, 'auc': 0.47547}
+...computing epoch stats took: 0.01s
+> Epoch 2: took 2417.1s (avg 2128.5s) | Best so far: epoch 1	train_loss: 1.0786 train_accuracy: 0.4014	val_loss: 1.0576 val_accuracy: 0.4340	test_loss: 1.0849 test_accuracy: 0.4579
+train: {'epoch': 3, 'time_epoch': 2216.74517, 'eta': 11992.64008, 'eta_hours': 3.33129, 'loss': 0.99738129, 'lr': 0.001, 'params': 233158, 'time_iter': 41.05084, 'accuracy': 0.53521, 'f1': 0.44481, 'auc': 0.68102}
+val: {'epoch': 3, 'time_epoch': 91.43098, 'loss': 1.02285994, 'lr': 0, 'params': 233158, 'time_iter': 13.06157, 'accuracy': 0.50943, 'f1': 0.26667, 'auc': 0.60059}
+test: {'epoch': 3, 'time_epoch': 110.67339, 'loss': 1.08958989, 'lr': 0, 'params': 233158, 'time_iter': 15.81048, 'accuracy': 0.41121, 'f1': 0.21091, 'auc': 0.54696}
+> Epoch 3: took 2418.9s (avg 2201.1s) | Best so far: epoch 3	train_loss: 0.9974 train_accuracy: 0.5352	val_loss: 1.0229 val_accuracy: 0.5094	test_loss: 1.0896 test_accuracy: 0.4112
+train: {'epoch': 4, 'time_epoch': 2171.91142, 'eta': 10167.00481, 'eta_hours': 2.82417, 'loss': 0.92529952, 'lr': 0.00095048, 'params': 233158, 'time_iter': 40.22058, 'accuracy': 0.60211, 'f1': 0.52936, 'auc': 0.76089}
+val: {'epoch': 4, 'time_epoch': 91.42724, 'loss': 1.06716274, 'lr': 0, 'params': 233158, 'time_iter': 13.06103, 'accuracy': 0.46226, 'f1': 0.2922, 'auc': 0.58248}
+test: {'epoch': 4, 'time_epoch': 110.66832, 'loss': 1.10031086, 'lr': 0, 'params': 233158, 'time_iter': 15.80976, 'accuracy': 0.47664, 'f1': 0.3384, 'auc': 0.57124}
+> Epoch 4: took 2374.1s (avg 2235.7s) | Best so far: epoch 3	train_loss: 0.9974 train_accuracy: 0.5352	val_loss: 1.0229 val_accuracy: 0.5094	test_loss: 1.0896 test_accuracy: 0.4112
+train: {'epoch': 5, 'time_epoch': 2192.6559, 'eta': 8239.77381, 'eta_hours': 2.28883, 'loss': 0.84553316, 'lr': 0.00081174, 'params': 233158, 'time_iter': 40.60474, 'accuracy': 0.68545, 'f1': 0.65177, 'auc': 0.82802}
+val: {'epoch': 5, 'time_epoch': 91.43619, 'loss': 1.04599548, 'lr': 0, 'params': 233158, 'time_iter': 13.06231, 'accuracy': 0.43396, 'f1': 0.39069, 'auc': 0.64656}
+test: {'epoch': 5, 'time_epoch': 110.66505, 'loss': 1.10720728, 'lr': 0, 'params': 233158, 'time_iter': 15.80929, 'accuracy': 0.36449, 'f1': 0.33056, 'auc': 0.56535}
+> Epoch 5: took 2394.8s (avg 2262.2s) | Best so far: epoch 3	train_loss: 0.9974 train_accuracy: 0.5352	val_loss: 1.0229 val_accuracy: 0.5094	test_loss: 1.0896 test_accuracy: 0.4112

@@ -1,0 +1,11 @@
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2024-02-14 19:06:02.772151
+[*] Loaded dataset 'CIFAR10' from 'PyG-GNNBenchmarkDataset':
+  Data(x=[7058005, 5], edge_index=[2, 56464040], edge_attr=[56464040], y=[60000], pos=[7058005, 2])
+  num graphs: 60000
+  avg num_nodes/graph: 117
+  num node features: 5
+  num edge features: 1
+  num classes: 10
+Precomputing Positional Encoding statistics: ['EquivStableLapPE'] for all graphs...
+  ...estimated to be undirected: False
