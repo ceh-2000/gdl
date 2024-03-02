@@ -1,4 +1,44 @@
+# Geometric Deep Learning: Applying Exphormers to NeuroGraph dataset
+
+## Setup
+1. Install `pyenv` to manage Python version using [this guide](https://realpython.com/intro-to-pyenv/).
+2. Install Python 3.11 using `pyenv`.
+3. Create a new virtual environment:
+```
+pyenv virtualenv 3.11.5 gdl-venv
+```
+4. Connect the virtual environment to the local directory and activate:
+```
+pyenv local gdl-venv 
+```
+5. Install the necessary dependencies:
+```
+pip3 install -r requirements.txt
+```
+
+## Experiments
+1. To test with the gender dataset for Neurograph, run:
+```
+python3 main.py --cfg configs/Exphormer/neural-Gender.yaml wandb.use False
+```
+
+## Results
+1. Choose experimental results by clicking through the seeded logs in the `results` directory.
+2. From Terminal, run:
+```
+tensorboard --logdir results/[YOUR_EXPERIMENT_NAME]
+```
+3. Naviage to http://localhost:6006/ (or whatever link is output by Terminal) and view the loss curve plots.
+
+
+____________________________________
+
+
+
+
+
 # Exphormers: Sparse Transformers for Graphs
+## (Original README for Exphormers paper)
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2303.06147-b31b1b.svg)](https://arxiv.org/abs/2303.06147)

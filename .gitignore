@@ -1,0 +1,4 @@
+*data.pt
+.python-version
+*__pycache__*
+.idea/
