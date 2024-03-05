@@ -143,7 +143,7 @@ if __name__ == '__main__':
         loaders = create_loader()
         print(f"Number of training samples: {len(loaders[0].dataset)}")
         print(f"Number of validation samples: {len(loaders[1].dataset)}")
-        print(f"Number of testing samples: {len(loaders[1].dataset)}")
+        print(f"Number of testing samples: {len(loaders[2].dataset)}")
 
         loggers = create_logger()
         # custom_train expects three loggers for 'train', 'valid' and 'test'.
