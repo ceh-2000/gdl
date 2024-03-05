@@ -138,8 +138,13 @@ if __name__ == '__main__':
         logging.info(f"[*] Run ID {run_id}: seed={cfg.seed}, "
                      f"split_index={cfg.dataset.split_index}")
         logging.info(f"    Starting now: {datetime.datetime.now()}")
+
         # Set machine learning pipeline
         loaders = create_loader()
+        print(f"Number of training samples: {len(loaders[0].dataset)}")
+        print(f"Number of validation samples: {len(loaders[1].dataset)}")
+        print(f"Number of testing samples: {len(loaders[1].dataset)}")
+
         loggers = create_logger()
         # custom_train expects three loggers for 'train', 'valid' and 'test'.
         # GraphGym code creates one logger/loader for each of the 'train_mask' etc.

@@ -147,7 +147,7 @@ optim:
   - 60
   - 90
   weight_decay: 1.0e-05
-out_dir: results\neural-Gender
+out_dir: results/neural-Gender
 posenc_ERE:
   accuracy: 0.1
   dim_pe: 16

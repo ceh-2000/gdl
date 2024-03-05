@@ -1,5 +1,5 @@
 [*] Run ID 0: seed=0, split_index=0
-    Starting now: 2024-02-21 11:39:59.645531
+    Starting now: 2024-03-05 15:40:23.520037
 [*] Loaded dataset 'HCPGender' from 'PyG-NeuroGraphDataset':
   Data(x=[1078000, 1000], edge_index=[2, 49133748], y=[1078])
   undirected: True
@@ -10,9 +10,9 @@
   num classes: 2
 Precomputing Positional Encoding statistics: ['EquivStableLapPE'] for all graphs...
   ...estimated to be undirected: True
-Done! Took 00:06:40.62
+Done! Took 00:02:18.16
 Adding expander edges (round 0) ...
-Done! Took 00:03:47.60
+Done! Took 00:01:12.56
 GraphGymModule(
   (model): MultiModel(
     (encoder): FeatureEncoder(
@@ -132,7 +132,7 @@ GraphGymModule(
     )
   )
 )
-accelerator: cuda
+accelerator: cpu
 benchmark: False
 bn:
   eps: 1e-05
@@ -180,7 +180,7 @@ dataset:
   transductive: False
   transform: none
   tu_simple: True
-devices: 1
+devices: None
 example_arg: example
 example_group:
   example_arg: example
@@ -275,7 +275,7 @@ optim:
   scheduler: cosine_with_warmup
   steps: [30, 60, 90]
   weight_decay: 1e-05
-out_dir: results\neural-Gender
+out_dir: results/neural-Gender
 posenc_ERE:
   accuracy: 0.1
   dim_pe: 16
@@ -396,7 +396,7 @@ pretrained:
   reset_prediction_head: True
 print: both
 round: 5
-run_dir: results\neural-Gender\0
+run_dir: results/neural-Gender/0
 run_id: 0
 run_multiple_splits: []
 seed: 0
@@ -437,10 +437,3 @@ wandb:
   use: False
 Num parameters: 233028
 Start from epoch 0
-train: {'epoch': 0, 'time_epoch': 714.43064, 'eta': 18575.19658, 'eta_hours': 5.15978, 'loss': 0.69485321, 'lr': 0.0, 'params': 233028, 'time_iter': 13.2302, 'accuracy': 0.47448, 'precision': 0.41944, 'recall': 0.38228, 'f1': 0.4, 'auc': 0.45734}
-...computing epoch stats took: 0.32s
-val: {'epoch': 0, 'time_epoch': 7.88273, 'loss': 0.69522598, 'lr': 0, 'params': 233028, 'time_iter': 1.1261, 'accuracy': 0.43519, 'precision': 0.33333, 'recall': 0.2449, 'f1': 0.28235, 'auc': 0.41577}
-...computing epoch stats took: 0.02s
-test: {'epoch': 0, 'time_epoch': 7.89998, 'loss': 0.69651492, 'lr': 0, 'params': 233028, 'time_iter': 1.12857, 'accuracy': 0.46296, 'precision': 0.32, 'recall': 0.16327, 'f1': 0.21622, 'auc': 0.37945}
-...computing epoch stats took: 0.03s
-> Epoch 0: took 730.6s (avg 730.6s) | Best so far: epoch 0	train_loss: 0.6949 train_accuracy: 0.4745	val_loss: 0.6952 val_accuracy: 0.4352	test_loss: 0.6965 test_accuracy: 0.4630
