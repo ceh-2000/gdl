@@ -1,5 +1,5 @@
 [*] Run ID 0: seed=0, split_index=0
-    Starting now: 2024-03-05 15:40:23.520037
+    Starting now: 2024-03-06 11:49:04.447744
 [*] Loaded dataset 'HCPGender' from 'PyG-NeuroGraphDataset':
   Data(x=[1078000, 1000], edge_index=[2, 49133748], y=[1078])
   undirected: True
@@ -10,9 +10,9 @@
   num classes: 2
 Precomputing Positional Encoding statistics: ['EquivStableLapPE'] for all graphs...
   ...estimated to be undirected: True
-Done! Took 00:02:18.16
+Done! Took 00:02:10.28
 Adding expander edges (round 0) ...
-Done! Took 00:01:12.56
+Done! Took 00:00:43.67
 GraphGymModule(
   (model): MultiModel(
     (encoder): FeatureEncoder(
