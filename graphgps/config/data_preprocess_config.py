@@ -20,6 +20,7 @@ def set_cfg_preprocess(cfg):
     cfg.prep.num_virt_node = 0
     cfg.prep.exp_count = 1
     cfg.prep.add_self_loops = False
+    cfg.prep.drop_edge = 0.0
     cfg.prep.add_reverse_edges = True
     cfg.prep.train_percent = 0.6
     cfg.prep.layer_edge_indices_dir = None

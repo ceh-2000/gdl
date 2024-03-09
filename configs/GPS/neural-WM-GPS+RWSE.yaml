@@ -5,6 +5,8 @@ devices : 4
 wandb:
   use: True
   project: neural
+prep:
+  drop_edge: 0.0
 dataset:
   format: PyG-NeuroGraphDataset
   name: HCPWM

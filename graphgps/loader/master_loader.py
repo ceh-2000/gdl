@@ -11,10 +11,11 @@ from numpy.random import default_rng
 from ogb.nodeproppred import PygNodePropPredDataset
 from ogb.graphproppred import PygGraphPropPredDataset
 from torch_geometric.datasets import (Amazon, Coauthor, GNNBenchmarkDataset, TUDataset,
-                                      WikipediaNetwork, ZINC, NeuroGraphDataset)
+                                      WikipediaNetwork, ZINC, NeuroGraphDataset, Actor)
 from torch_geometric.graphgym.config import cfg
 from torch_geometric.graphgym.loader import load_pyg, load_ogb, set_dataset_attr
 from torch_geometric.graphgym.register import register_loader
+from torch_geometric.utils import dropout_edge
 
 from graphgps.loader.planetoid import Planetoid
 from graphgps.loader.dataset.aqsol_molecules import AQSOL
@@ -28,7 +29,7 @@ from graphgps.transform.posenc_stats import compute_posenc_stats
 from graphgps.transform.task_preprocessing import task_specific_preprocessing #MOD
 
 from graphgps.transform.transforms import (pre_transform_in_memory,
-                                           #generate_splits, # not the same as split_generator above.
+    # generate_splits, # not the same as split_generator above.
                                            typecast_x, concat_x_and_pos,
                                            clip_graphs_to_size, move_node_feat_to_x)
 from graphgps.transform.expander_edges import generate_random_expander
@@ -38,23 +39,27 @@ from graphgps.transform.dist_transforms import (add_dist_features, add_reverse_e
                                                  effective_resistances_from_embedding)
 
 #MOD
-def pre_transform_NeuroGraphDataset_vectorized(data):
-    node_features_1 = data.x[data.edge_index[0]]
-    node_features_2 = data.x[data.edge_index[1]]
-
-    node_features_1 = (node_features_1 - node_features_1.mean(dim=1, keepdim=True)) / node_features_1.std(dim=1,
-                                                                                                          keepdim=True)
-    node_features_2 = (node_features_2 - node_features_2.mean(dim=1, keepdim=True)) / node_features_2.std(dim=1,
-                                                                                                          keepdim=True)
-
-    correlation = (node_features_1 * node_features_2).sum(dim=1) / (node_features_1.size(1) - 1)
-
-    data.edge_attr = correlation
-    return data
+# def pre_transform_NeuroGraphDataset_vectorized(data):
+#     node_features_1 = data.x[data.edge_index[0]]
+#     node_features_2 = data.x[data.edge_index[1]]
+#
+#     node_features_1 = (node_features_1 - node_features_1.mean(dim=1, keepdim=True)) / node_features_1.std(dim=1,
+#                                                                                                           keepdim=True)
+#     node_features_2 = (node_features_2 - node_features_2.mean(dim=1, keepdim=True)) / node_features_2.std(dim=1,
+#                                                                                                           keepdim=True)
+#
+#     correlation = (node_features_1 * node_features_2).sum(dim=1) / (node_features_1.size(1) - 1)
+#
+#     data.edge_attr = correlation
+#     return data
 
 #MOD 
-def pre_transform_NeuroGraphDataset_one(data):
+def pre_transform_NeuroGraphDataset(data):
     data.edge_attr = torch.Tensor(np.ones_like(data.edge_index[0, :]))
+
+    if cfg.prep.drop_edge > 0.0:
+        data.edge_index = dropout_edge(data.edge_index, p = cfg.prep.drop_edge)[0]
+
     return data
 
 
@@ -134,7 +139,8 @@ def load_dataset_master(format, name, dataset_dir):
         
         #BEGIN MOD
         if pyg_dataset_id == 'NeuroGraphDataset':
-            dataset = NeuroGraphDataset(dataset_dir, name, transform=pre_transform_NeuroGraphDataset_one)
+            dataset = NeuroGraphDataset(dataset_dir, name, transform=pre_transform_NeuroGraphDataset)
+
         elif pyg_dataset_id == 'Actor': 
             if name != 'none':
                 raise ValueError(f"Actor class provides only one dataset.")

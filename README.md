@@ -21,6 +21,8 @@ pip3 install -r requirements.txt
 ```
 python3 main.py --cfg configs/Exphormer/neural-Gender.yaml wandb.use False
 ```
+2. To adjust the probability that an edge is dropped, modify the `drop_edge` parameter under `prep` for the configuration 
+file corresponding to the experiment of interest. Run the experiment as above.
 
 ## Results
 1. Choose experimental results by clicking through the seeded logs in the `results` directory.

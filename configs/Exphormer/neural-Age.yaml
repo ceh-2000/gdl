@@ -23,6 +23,7 @@ prep:
   exp_deg: 5 # Algorithm will use 5 permutations or 5 Hamiltonian cycles, so actual degree will be 10
   add_edge_index: True # Set True if you want to add real edges beside expander edges
   num_virt_node: 1 # Set True if you want to add global node connections beside expander edges
+  drop_edge: 0.0
 posenc_EquivStableLapPE:
   enable: True
   eigen:

@@ -147,7 +147,7 @@ optim:
   - 60
   - 90
   weight_decay: 1.0e-05
-out_dir: results\neural-GPS+RWSE+small
+out_dir: results/neural-GPS+RWSE+small
 posenc_ERE:
   accuracy: 0.1
   dim_pe: 16
@@ -253,6 +253,7 @@ prep:
   add_self_loops: false
   dist_cutoff: 510
   dist_enable: false
+  drop_edge: 0.1
   exp: false
   exp_algorithm: Random-d
   exp_count: 1
