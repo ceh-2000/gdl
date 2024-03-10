@@ -1,13 +1,14 @@
 [*] Run ID 0: seed=0, split_index=0
-    Starting now: 2024-03-09 00:04:16.809172
+    Starting now: 2024-03-10 22:12:57.397301
 [*] Loaded dataset 'HCPGender' from 'PyG-NeuroGraphDataset':
   Data(x=[1078000, 1000], edge_index=[2, 49133748], y=[1078])
-  undirected: False
+  undirected: True
   num graphs: 1078
+ number of edges: 49133748
   avg num_nodes/graph: 1000
   num node features: 1000
   num edge features: 1
   num classes: 2
 Parsed RWSE PE kernel times / steps: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 Precomputing Positional Encoding statistics: ['RWSE'] for all graphs...
-  ...estimated to be undirected: False
+  ...estimated to be undirected: True

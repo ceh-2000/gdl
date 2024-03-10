@@ -34,32 +34,13 @@ from graphgps.transform.transforms import (pre_transform_in_memory,
                                            clip_graphs_to_size, move_node_feat_to_x)
 from graphgps.transform.expander_edges import generate_random_expander
 from graphgps.transform.dist_transforms import (add_dist_features, add_reverse_edges,
-                                                 add_self_loops, effective_resistances, 
-                                                 effective_resistance_embedding,
-                                                 effective_resistances_from_embedding)
-
-#MOD
-# def pre_transform_NeuroGraphDataset_vectorized(data):
-#     node_features_1 = data.x[data.edge_index[0]]
-#     node_features_2 = data.x[data.edge_index[1]]
-#
-#     node_features_1 = (node_features_1 - node_features_1.mean(dim=1, keepdim=True)) / node_features_1.std(dim=1,
-#                                                                                                           keepdim=True)
-#     node_features_2 = (node_features_2 - node_features_2.mean(dim=1, keepdim=True)) / node_features_2.std(dim=1,
-#                                                                                                           keepdim=True)
-#
-#     correlation = (node_features_1 * node_features_2).sum(dim=1) / (node_features_1.size(1) - 1)
-#
-#     data.edge_attr = correlation
-#     return data
+                                                add_self_loops, effective_resistances,
+                                                effective_resistance_embedding,
+                                                effective_resistances_from_embedding, remove_edges)
 
 #MOD 
-def pre_transform_NeuroGraphDataset(data):
+def pre_transform_NeuroGraphDataset_ones(data):
     data.edge_attr = torch.Tensor(np.ones_like(data.edge_index[0, :]))
-
-    if cfg.prep.drop_edge > 0.0:
-        data.edge_index = dropout_edge(data.edge_index, p = cfg.prep.drop_edge)[0]
-
     return data
 
 
@@ -74,6 +55,7 @@ def log_loaded_dataset(dataset, format, name):
         total_num_nodes = dataset.data.num_nodes
     elif hasattr(dataset.data, 'x'):
         total_num_nodes = dataset.data.x.size(0)
+    logging.info(f" number of edges: {dataset.data.num_edges}")
     logging.info(f"  avg num_nodes/graph: "
                  f"{total_num_nodes // len(dataset)}")
     logging.info(f"  num node features: {dataset.num_node_features}")
@@ -139,7 +121,9 @@ def load_dataset_master(format, name, dataset_dir):
         
         #BEGIN MOD
         if pyg_dataset_id == 'NeuroGraphDataset':
-            dataset = NeuroGraphDataset(dataset_dir, name, transform=pre_transform_NeuroGraphDataset)
+            dataset = NeuroGraphDataset(dataset_dir, name, transform=pre_transform_NeuroGraphDataset_ones)
+            if cfg.prep.drop_edge > 0:
+                pre_transform_in_memory(dataset, partial(remove_edges, prob=cfg.prep.drop_edge))
 
         elif pyg_dataset_id == 'Actor': 
             if name != 'none':
