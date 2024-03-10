@@ -8,7 +8,7 @@ from collections import deque
 from functools import partial
 from typing import Any, Optional
 from torch_geometric.data import Data
-from torch_geometric.utils import degree
+from torch_geometric.utils import degree, dropout_edge
 
 
 def bfs_shortest_path(source, G, max_n, cutoff):
@@ -41,6 +41,10 @@ def add_reverse_edges(data):
   undirected_edge_list = torch.cat((edge_list, edge_list.flip(0)), 1)
   data.edge_index = undirected_edge_list
   return data
+
+def remove_edges(data, prob):
+    data.edge_index = dropout_edge(data.edge_index, p=prob)[0]
+    return data
 
 def add_self_loops(data):
   edge_list = data.edge_index
