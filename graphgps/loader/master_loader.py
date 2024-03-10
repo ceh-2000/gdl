@@ -55,6 +55,7 @@ def log_loaded_dataset(dataset, format, name):
         total_num_nodes = dataset.data.num_nodes
     elif hasattr(dataset.data, 'x'):
         total_num_nodes = dataset.data.x.size(0)
+    logging.info(f" number of edges: {dataset.data.num_edges}")
     logging.info(f"  avg num_nodes/graph: "
                  f"{total_num_nodes // len(dataset)}")
     logging.info(f"  num node features: {dataset.num_node_features}")
