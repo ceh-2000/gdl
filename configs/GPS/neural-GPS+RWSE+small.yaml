@@ -6,7 +6,7 @@ wandb:
   use: True
   project: neural
 prep:
-  drop_edge: 0.0
+  drop_edge: 0.5
 dataset:
   format: PyG-NeuroGraphDataset
   name: HCPGender
