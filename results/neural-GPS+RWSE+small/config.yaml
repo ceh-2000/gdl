@@ -253,7 +253,7 @@ prep:
   add_self_loops: false
   dist_cutoff: 510
   dist_enable: false
-  drop_edge: 0.5
+  drop_edge: 0.0
   exp: false
   exp_algorithm: Random-d
   exp_count: 1
