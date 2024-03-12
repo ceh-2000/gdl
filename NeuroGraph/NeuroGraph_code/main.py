@@ -97,6 +97,7 @@ def train(train_loader):
     model.train()
     total_loss = 0
     for data in train_loader:
+        print(data.edge_index)
         data = data.to(args.device)
         out = model(data)  # Perform a single forward pass.
         loss = criterion(out, data.y)
@@ -172,8 +173,8 @@ for index in range(args.runs):
         test_acc = test(test_loader)
         # if epoch%10==0:
         print(
-            "epoch: {}, loss: {}, val_acc:{}, test_acc:{}".format(epoch, np.round(loss.item(), 6), np.round(val_acc, 2),
-                                                                  np.round(test_acc, 2)))
+            "epoch: {}, loss: {}, val_acc:{}, test_acc:{}".format(epoch, np.round(loss.item(), 6), np.round(val_acc, 4),
+                                                                  np.round(test_acc, 4)))
         val_acc_history.append(val_acc)
         if val_acc > best_val_acc:
             best_val_acc = val_acc
