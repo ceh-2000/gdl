@@ -24,7 +24,7 @@ prep:
   exp_deg: 5 # Algorithm will use 5 permutations or 5 Hamiltonian cycles, so actual degree will be 10
   add_edge_index: True # Set True if you want to add real edges beside expander edges
   num_virt_node: 1 # Set True if you want to add global node connections beside expander edges
-  drop_edge: 0.0
+  drop_edge: 0.25
 posenc_EquivStableLapPE:
   enable: True
   eigen:
@@ -44,7 +44,7 @@ model:
   graph_pooling: mean
 gt:
   layer_type: Exphormer #CustomGatedGCN+Exphormer # some other options: Exphormer, GINE+Exphormer, GINE, GINE__exp
-  layers: 5
+  layers: 3
   n_heads: 4
   dim_hidden: 64  # `gt.dim_hidden` must match `gnn.dim_inner`
   dropout: 0.1
@@ -66,6 +66,6 @@ optim:
   optimizer: adamW
   weight_decay: 1e-5
   base_lr: 0.001
-  max_epoch: 10
+  max_epoch: 65
   scheduler: cosine_with_warmup
   num_warmup_epochs: 5

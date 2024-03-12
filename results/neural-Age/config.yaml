@@ -107,7 +107,7 @@ gt:
   full_graph: true
   gamma: 1.0e-05
   layer_norm: false
-  layer_type: CustomGatedGCN+Exphormer
+  layer_type: Exphormer
   layers: 3
   n_heads: 4
   pna_degrees: []
@@ -134,7 +134,7 @@ optim:
   clip_grad_norm: true
   clip_grad_norm_value: 1.0
   lr_decay: 0.1
-  max_epoch: 10
+  max_epoch: 60
   min_lr: 0.0
   momentum: 0.9
   num_warmup_epochs: 3
@@ -253,6 +253,7 @@ prep:
   add_self_loops: false
   dist_cutoff: 510
   dist_enable: false
+  drop_edge: 0.25
   exp: true
   exp_algorithm: Random-d
   exp_count: 1

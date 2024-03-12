@@ -1,18 +1,19 @@
 [*] Run ID 0: seed=0, split_index=0
-    Starting now: 2024-03-06 11:49:04.447744
+    Starting now: 2024-03-12 02:51:12.606285
 [*] Loaded dataset 'HCPGender' from 'PyG-NeuroGraphDataset':
-  Data(x=[1078000, 1000], edge_index=[2, 49133748], y=[1078])
-  undirected: True
+  Data(x=[1078000, 1000], edge_index=[2, 36849992], y=[1078])
+  undirected: False
   num graphs: 1078
+ number of edges: 36849992
   avg num_nodes/graph: 1000
   num node features: 1000
   num edge features: 1
   num classes: 2
 Precomputing Positional Encoding statistics: ['EquivStableLapPE'] for all graphs...
-  ...estimated to be undirected: True
-Done! Took 00:02:10.28
+  ...estimated to be undirected: False
+Done! Took 00:15:39.49
 Adding expander edges (round 0) ...
-Done! Took 00:00:43.67
+Done! Took 00:01:29.55
 GraphGymModule(
   (model): MultiModel(
     (encoder): FeatureEncoder(
@@ -36,14 +37,9 @@ GraphGymModule(
     )
     (layers): Sequential(
       (0): MultiLayer(
-        summary: dim_h=64, local_gnn_type=['CustomGatedGCN', 'Exphormer'], heads=4
+        summary: dim_h=64, local_gnn_type=['Exphormer'], heads=4
         (models): ModuleList(
-          (0): LocalModel(
-            (local_model): GatedGCNLayer()
-            (norm1_local): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (dropout_local): Dropout(p=0.1, inplace=False)
-          )
-          (1): GlobalModel(
+          (0): GlobalModel(
             (self_attn): ExphormerAttention(
               (Q): Linear(in_features=64, out_features=64, bias=False)
               (K): Linear(in_features=64, out_features=64, bias=False)
@@ -61,14 +57,9 @@ GraphGymModule(
         (ff_dropout2): Dropout(p=0.1, inplace=False)
       )
       (1): MultiLayer(
-        summary: dim_h=64, local_gnn_type=['CustomGatedGCN', 'Exphormer'], heads=4
+        summary: dim_h=64, local_gnn_type=['Exphormer'], heads=4
         (models): ModuleList(
-          (0): LocalModel(
-            (local_model): GatedGCNLayer()
-            (norm1_local): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (dropout_local): Dropout(p=0.1, inplace=False)
-          )
-          (1): GlobalModel(
+          (0): GlobalModel(
             (self_attn): ExphormerAttention(
               (Q): Linear(in_features=64, out_features=64, bias=False)
               (K): Linear(in_features=64, out_features=64, bias=False)
@@ -86,14 +77,9 @@ GraphGymModule(
         (ff_dropout2): Dropout(p=0.1, inplace=False)
       )
       (2): MultiLayer(
-        summary: dim_h=64, local_gnn_type=['CustomGatedGCN', 'Exphormer'], heads=4
+        summary: dim_h=64, local_gnn_type=['Exphormer'], heads=4
         (models): ModuleList(
-          (0): LocalModel(
-            (local_model): GatedGCNLayer()
-            (norm1_local): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (dropout_local): Dropout(p=0.1, inplace=False)
-          )
-          (1): GlobalModel(
+          (0): GlobalModel(
             (self_attn): ExphormerAttention(
               (Q): Linear(in_features=64, out_features=64, bias=False)
               (K): Linear(in_features=64, out_features=64, bias=False)
@@ -132,7 +118,7 @@ GraphGymModule(
     )
   )
 )
-accelerator: cpu
+accelerator: cuda
 benchmark: False
 bn:
   eps: 1e-05
@@ -180,7 +166,7 @@ dataset:
   transductive: False
   transform: none
   tu_simple: True
-devices: None
+devices: 1
 example_arg: example
 example_group:
   example_arg: example
@@ -238,7 +224,7 @@ gt:
   full_graph: True
   gamma: 1e-05
   layer_norm: False
-  layer_type: CustomGatedGCN+Exphormer
+  layer_type: Exphormer
   layers: 3
   n_heads: 4
   pna_degrees: []
@@ -265,7 +251,7 @@ optim:
   clip_grad_norm: True
   clip_grad_norm_value: 1.0
   lr_decay: 0.1
-  max_epoch: 27
+  max_epoch: 50
   min_lr: 0.0
   momentum: 0.9
   num_warmup_epochs: 5
@@ -275,7 +261,8 @@ optim:
   scheduler: cosine_with_warmup
   steps: [30, 60, 90]
   weight_decay: 1e-05
-out_dir: results/neural-Gender
+out_dir: results\neural-Gender
+params: 130887
 posenc_ERE:
   accuracy: 0.1
   dim_pe: 16
@@ -381,6 +368,7 @@ prep:
   add_self_loops: False
   dist_cutoff: 510
   dist_enable: False
+  drop_edge: 0.25
   exp: True
   exp_algorithm: Random-d
   exp_count: 1
@@ -396,7 +384,7 @@ pretrained:
   reset_prediction_head: True
 print: both
 round: 5
-run_dir: results/neural-Gender/0
+run_dir: results\neural-Gender\0
 run_id: 0
 run_multiple_splits: []
 seed: 0
@@ -435,5 +423,54 @@ wandb:
   name: 
   project: neural
   use: False
-Num parameters: 233028
+Num parameters: 168897
 Start from epoch 0
+train: {'epoch': 0, 'time_epoch': 308.73638, 'eta': 15128.08284, 'eta_hours': 4.20225, 'loss': 0.70408381, 'lr': 0.0, 'params': 168897, 'time_iter': 5.71734, 'accuracy': 0.45824, 'precision': 0.45824, 'recall': 1.0, 'f1': 0.62848, 'auc': 0.51608}
+...computing epoch stats took: 0.04s
+val: {'epoch': 0, 'time_epoch': 7.96085, 'loss': 0.7066487, 'lr': 0, 'params': 168897, 'time_iter': 1.13726, 'accuracy': 0.4537, 'precision': 0.4537, 'recall': 1.0, 'f1': 0.6242, 'auc': 0.49533}
+...computing epoch stats took: 0.02s
+test: {'epoch': 0, 'time_epoch': 21.29883, 'loss': 0.70494353, 'lr': 0, 'params': 168897, 'time_iter': 3.04269, 'accuracy': 0.4537, 'precision': 0.4537, 'recall': 1.0, 'f1': 0.6242, 'auc': 0.52957}
+...computing epoch stats took: 0.01s
+> Epoch 0: took 338.1s (avg 338.1s) | Best so far: epoch 0	train_loss: 0.7041 train_accuracy: 0.4582	val_loss: 0.7066 val_accuracy: 0.4537	test_loss: 0.7049 test_accuracy: 0.4537
+train: {'epoch': 1, 'time_epoch': 340.80228, 'eta': 15588.92788, 'eta_hours': 4.33026, 'loss': 0.67538928, 'lr': 0.0002, 'params': 168897, 'time_iter': 6.31115, 'accuracy': 0.58237, 'precision': 0.52941, 'recall': 0.79747, 'f1': 0.63636, 'auc': 0.68802}
+...computing epoch stats took: 0.02s
+val: {'epoch': 1, 'time_epoch': 7.9337, 'loss': 0.65284954, 'lr': 0, 'params': 168897, 'time_iter': 1.13339, 'accuracy': 0.69444, 'precision': 0.61429, 'recall': 0.87755, 'f1': 0.72269, 'auc': 0.79834}
+...computing epoch stats took: 0.02s
+test: {'epoch': 1, 'time_epoch': 21.26057, 'loss': 0.65008155, 'lr': 0, 'params': 168897, 'time_iter': 3.03722, 'accuracy': 0.66667, 'precision': 0.58442, 'recall': 0.91837, 'f1': 0.71429, 'auc': 0.82912}
+...computing epoch stats took: 0.01s
+> Epoch 1: took 370.1s (avg 354.1s) | Best so far: epoch 1	train_loss: 0.6754 train_accuracy: 0.5824	val_loss: 0.6528 val_accuracy: 0.6944	test_loss: 0.6501 test_accuracy: 0.6667
+train: {'epoch': 2, 'time_epoch': 340.04461, 'eta': 15503.47122, 'eta_hours': 4.30652, 'loss': 0.62572322, 'lr': 0.0004, 'params': 168897, 'time_iter': 6.29712, 'accuracy': 0.74942, 'precision': 0.69845, 'recall': 0.79747, 'f1': 0.74468, 'auc': 0.81708}
+...computing epoch stats took: 0.05s
+val: {'epoch': 2, 'time_epoch': 8.03328, 'loss': 0.60077329, 'lr': 0, 'params': 168897, 'time_iter': 1.14761, 'accuracy': 0.76852, 'precision': 0.67143, 'recall': 0.95918, 'f1': 0.78992, 'auc': 0.89588}
+...computing epoch stats took: 0.02s
+test: {'epoch': 2, 'time_epoch': 21.34174, 'loss': 0.60511204, 'lr': 0, 'params': 168897, 'time_iter': 3.04882, 'accuracy': 0.75926, 'precision': 0.65753, 'recall': 0.97959, 'f1': 0.78689, 'auc': 0.89934}
+...computing epoch stats took: 0.02s
+> Epoch 2: took 369.5s (avg 359.2s) | Best so far: epoch 2	train_loss: 0.6257 train_accuracy: 0.7494	val_loss: 0.6008 val_accuracy: 0.7685	test_loss: 0.6051 test_accuracy: 0.7593
+train: {'epoch': 3, 'time_epoch': 317.99403, 'eta': 15037.13893, 'eta_hours': 4.17698, 'loss': 0.56486573, 'lr': 0.0006, 'params': 168897, 'time_iter': 5.88878, 'accuracy': 0.82019, 'precision': 0.79268, 'recall': 0.82278, 'f1': 0.80745, 'auc': 0.86383}
+val: {'epoch': 3, 'time_epoch': 7.98292, 'loss': 0.73683273, 'lr': 0, 'params': 168897, 'time_iter': 1.14042, 'accuracy': 0.47222, 'precision': 0.46154, 'recall': 0.97959, 'f1': 0.62745, 'auc': 0.87029}
+test: {'epoch': 3, 'time_epoch': 21.28967, 'loss': 0.72812554, 'lr': 0, 'params': 168897, 'time_iter': 3.04138, 'accuracy': 0.5, 'precision': 0.47573, 'recall': 1.0, 'f1': 0.64474, 'auc': 0.90591}
+> Epoch 3: took 347.3s (avg 356.2s) | Best so far: epoch 2	train_loss: 0.6257 train_accuracy: 0.7494	val_loss: 0.6008 val_accuracy: 0.7685	test_loss: 0.6051 test_accuracy: 0.7593
+train: {'epoch': 4, 'time_epoch': 329.04576, 'eta': 14729.60754, 'eta_hours': 4.09156, 'loss': 0.52412519, 'lr': 0.0008, 'params': 168897, 'time_iter': 6.09344, 'accuracy': 0.82599, 'precision': 0.80856, 'recall': 0.81266, 'f1': 0.81061, 'auc': 0.89588}
+val: {'epoch': 4, 'time_epoch': 7.89015, 'loss': 0.52317868, 'lr': 0, 'params': 168897, 'time_iter': 1.12716, 'accuracy': 0.82407, 'precision': 0.78846, 'recall': 0.83673, 'f1': 0.81188, 'auc': 0.86337}
+test: {'epoch': 4, 'time_epoch': 21.25368, 'loss': 0.53036929, 'lr': 0, 'params': 168897, 'time_iter': 3.03624, 'accuracy': 0.81481, 'precision': 0.77358, 'recall': 0.83673, 'f1': 0.80392, 'auc': 0.8862}
+> Epoch 4: took 358.2s (avg 356.6s) | Best so far: epoch 4	train_loss: 0.5241 train_accuracy: 0.8260	val_loss: 0.5232 val_accuracy: 0.8241	test_loss: 0.5304 test_accuracy: 0.8148
+train: {'epoch': 5, 'time_epoch': 338.54953, 'eta': 14484.59895, 'eta_hours': 4.0235, 'loss': 0.48641308, 'lr': 0.001, 'params': 168897, 'time_iter': 6.26944, 'accuracy': 0.84339, 'precision': 0.82338, 'recall': 0.83797, 'f1': 0.83061, 'auc': 0.89288}
+val: {'epoch': 5, 'time_epoch': 7.8874, 'loss': 0.57636919, 'lr': 0, 'params': 168897, 'time_iter': 1.12677, 'accuracy': 0.72222, 'precision': 0.91304, 'recall': 0.42857, 'f1': 0.58333, 'auc': 0.86371}
+test: {'epoch': 5, 'time_epoch': 21.28671, 'loss': 0.64662639, 'lr': 0, 'params': 168897, 'time_iter': 3.04096, 'accuracy': 0.62963, 'precision': 0.8, 'recall': 0.2449, 'f1': 0.375, 'auc': 0.82117}
+> Epoch 5: took 367.8s (avg 358.5s) | Best so far: epoch 4	train_loss: 0.5241 train_accuracy: 0.8260	val_loss: 0.5232 val_accuracy: 0.8241	test_loss: 0.5304 test_accuracy: 0.8148
+train: {'epoch': 6, 'time_epoch': 287.10415, 'eta': 13896.8428, 'eta_hours': 3.86023, 'loss': 0.44637704, 'lr': 0.00099878, 'params': 168897, 'time_iter': 5.31674, 'accuracy': 0.86427, 'precision': 0.86198, 'recall': 0.83797, 'f1': 0.84981, 'auc': 0.896}
+val: {'epoch': 6, 'time_epoch': 7.9574, 'loss': 0.49751632, 'lr': 0, 'params': 168897, 'time_iter': 1.13677, 'accuracy': 0.7963, 'precision': 0.78723, 'recall': 0.7551, 'f1': 0.77083, 'auc': 0.86544}
+test: {'epoch': 6, 'time_epoch': 21.28314, 'loss': 0.42141335, 'lr': 0, 'params': 168897, 'time_iter': 3.04045, 'accuracy': 0.87963, 'precision': 0.90909, 'recall': 0.81633, 'f1': 0.86022, 'auc': 0.93497}
+> Epoch 6: took 316.4s (avg 352.5s) | Best so far: epoch 4	train_loss: 0.5241 train_accuracy: 0.8260	val_loss: 0.5232 val_accuracy: 0.8241	test_loss: 0.5304 test_accuracy: 0.8148
+train: {'epoch': 7, 'time_epoch': 316.26329, 'eta': 13537.33514, 'eta_hours': 3.76037, 'loss': 0.44245299, 'lr': 0.00099513, 'params': 168897, 'time_iter': 5.85673, 'accuracy': 0.84455, 'precision': 0.85753, 'recall': 0.79241, 'f1': 0.82368, 'auc': 0.89184}
+val: {'epoch': 7, 'time_epoch': 7.95593, 'loss': 0.72494656, 'lr': 0, 'params': 168897, 'time_iter': 1.13656, 'accuracy': 0.61111, 'precision': 0.53933, 'recall': 0.97959, 'f1': 0.69565, 'auc': 0.7423}
+test: {'epoch': 7, 'time_epoch': 21.25192, 'loss': 0.6776822, 'lr': 0, 'params': 168897, 'time_iter': 3.03599, 'accuracy': 0.64815, 'precision': 0.56322, 'recall': 1.0, 'f1': 0.72059, 'auc': 0.76029}
+> Epoch 7: took 345.6s (avg 351.6s) | Best so far: epoch 4	train_loss: 0.5241 train_accuracy: 0.8260	val_loss: 0.5232 val_accuracy: 0.8241	test_loss: 0.5304 test_accuracy: 0.8148
+train: {'epoch': 8, 'time_epoch': 317.90533, 'eta': 13194.91773, 'eta_hours': 3.66525, 'loss': 0.39285098, 'lr': 0.00098907, 'params': 168897, 'time_iter': 5.88714, 'accuracy': 0.87703, 'precision': 0.87147, 'recall': 0.85823, 'f1': 0.8648, 'auc': 0.92247}
+val: {'epoch': 8, 'time_epoch': 7.88829, 'loss': 0.52319256, 'lr': 0, 'params': 168897, 'time_iter': 1.1269, 'accuracy': 0.77778, 'precision': 0.70492, 'recall': 0.87755, 'f1': 0.78182, 'auc': 0.86026}
+test: {'epoch': 8, 'time_epoch': 21.28291, 'loss': 0.45672917, 'lr': 0, 'params': 168897, 'time_iter': 3.04042, 'accuracy': 0.83333, 'precision': 0.7541, 'recall': 0.93878, 'f1': 0.83636, 'auc': 0.90142}
+> Epoch 8: took 347.1s (avg 351.1s) | Best so far: epoch 4	train_loss: 0.5241 train_accuracy: 0.8260	val_loss: 0.5232 val_accuracy: 0.8241	test_loss: 0.5304 test_accuracy: 0.8148
+train: {'epoch': 9, 'time_epoch': 366.59589, 'eta': 13052.16498, 'eta_hours': 3.6256, 'loss': 0.35042468, 'lr': 0.00098063, 'params': 168897, 'time_iter': 6.78881, 'accuracy': 0.89907, 'precision': 0.885, 'recall': 0.8962, 'f1': 0.89057, 'auc': 0.94429}
+val: {'epoch': 9, 'time_epoch': 7.98486, 'loss': 0.8076629, 'lr': 0, 'params': 168897, 'time_iter': 1.14069, 'accuracy': 0.59259, 'precision': 0.52747, 'recall': 0.97959, 'f1': 0.68571, 'auc': 0.66448}
+test: {'epoch': 9, 'time_epoch': 21.2938, 'loss': 0.80700025, 'lr': 0, 'params': 168897, 'time_iter': 3.04197, 'accuracy': 0.58333, 'precision': 0.52128, 'recall': 1.0, 'f1': 0.68531, 'auc': 0.71774}
+> Epoch 9: took 395.9s (avg 355.6s) | Best so far: epoch 4	train_loss: 0.5241 train_accuracy: 0.8260	val_loss: 0.5232 val_accuracy: 0.8241	test_loss: 0.5304 test_accuracy: 0.8148
