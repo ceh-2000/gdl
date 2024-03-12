@@ -97,7 +97,6 @@ def train(train_loader):
     model.train()
     total_loss = 0
     for data in train_loader:
-        print(data.edge_index)
         data = data.to(args.device)
         out = model(data)  # Perform a single forward pass.
         loss = criterion(out, data.y)
