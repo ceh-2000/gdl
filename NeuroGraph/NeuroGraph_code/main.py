@@ -21,6 +21,7 @@ parser.add_argument('--runs', type=int, default=1)
 parser.add_argument('--device', type=str, default='cuda')
 parser.add_argument('--seed', type=int, default=123)
 parser.add_argument('--model', type=str, default="GCNConv")
+parser.add_argument('--attention', type=int, default=0)
 parser.add_argument('--hidden', type=int, default=32)
 parser.add_argument('--hidden_mlp', type=int, default=64)
 parser.add_argument('--num_layers', type=int, default=3)
@@ -130,9 +131,12 @@ for index in range(args.runs):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     gnn = eval(args.model)
-    # model = ResidualGNNs(args,train_dataset,args.hidden,args.hidden_mlp,args.num_layers,gnn).to(args.device) ## apply GNN*
 
-    #
+    if args.attention == 0:
+        model = ResidualGNNs(args,train_dataset,args.hidden,args.hidden_mlp,args.num_layers,gnn).to(args.device) ## apply GNN*
+    elif args.attention == 1:
+        model = ResidualGNNs2(args, train_dataset, hidden_channels=args.hidden, hidden=args.hidden_mlp,
+                          num_layers=args.num_layers, GNN=gnn, k=0.6).to(args.device)
 
     # attention between nodes
     # model=ResidualAttentionalGNN1(args=args, train_dataset=train_dataset, hidden_channels=args.hidden, hidden=args.hidden_mlp, num_layers=args.num_layers, GNN=gnn, alpha=args.alpha).to(args.device)
@@ -152,8 +156,8 @@ for index in range(args.runs):
     # self attention
     # model=ResidualGNNsWithSelfAttention(args, train_dataset, hidden_channels=args.hidden, hidden=args.hidden_mlp, num_layers=args.num_layers, GNN=gnn, k=0.6, heads=1).to(args.device)
 
-    model = ResidualGNNs2(args, train_dataset, hidden_channels=args.hidden, hidden=args.hidden_mlp,
-                          num_layers=args.num_layers, GNN=gnn, k=0.6).to(args.device)
+    # model = ResidualGNNs2(args, train_dataset, hidden_channels=args.hidden, hidden=args.hidden_mlp,
+    #                       num_layers=args.num_layers, GNN=gnn, k=0.6).to(args.device)
 
     print(model)
     total_params = sum(p.numel() for p in model.parameters())
