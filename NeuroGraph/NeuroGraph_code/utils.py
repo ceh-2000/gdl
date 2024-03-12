@@ -1,7 +1,4 @@
 import torch
-from torch.nn import Linear
-from torch import nn
-from torch_geometric.nn import global_max_pool
 from torch_geometric.nn import aggr
 import torch.nn.functional as F
 from torch_geometric.nn import APPNP, MLP, GCNConv, GINConv, SAGEConv, GraphConv, TransformerConv, ChebConv, GATConv, SGConv, GeneralConv
@@ -11,7 +8,7 @@ import math
 from torch.nn import BatchNorm1d
 
 softmax = torch.nn.LogSoftmax(dim=1)
-        # self.attention = Attention(input_dim1, hidden_channels)
+# self.attention = Attention(input_dim1, hidden_channels)
 
 class ResidualGNNs(torch.nn.Module):
     def __init__(self,args, train_dataset, hidden_channels,hidden, num_layers, GNN, k=0.6):

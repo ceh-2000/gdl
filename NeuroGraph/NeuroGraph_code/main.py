@@ -1,3 +1,5 @@
+from torch_geometric.utils import dropout_edge
+
 from NeuroGraph.datasets import NeuroGraphDataset
 import argparse
 import torch
@@ -30,6 +32,7 @@ parser.add_argument('--lr', type=float, default=1e-5)
 parser.add_argument('--weight_decay', type=float, default=0.0005)
 parser.add_argument('--dropout', type=float, default=0.5)
 parser.add_argument('--alpha', type=float, default=0.5)
+parser.add_argument('--drop_edges', type=float, default=0.0)
 args = parser.parse_args()
 path = "base_params/"
 res_path = "results/"
@@ -49,10 +52,18 @@ if torch.cuda.is_available():
 random.seed(args.seed)
 np.random.seed(args.seed)
 
+def pre_transform_NeuroGraphDataset(data):
+    data.edge_attr = torch.Tensor(np.ones_like(data.edge_index[0, :]))
 
-dataset = NeuroGraphDataset(root=root, name= args.dataset)
-print(dataset.num_classes)
-print(len(dataset))
+    if args.drop_edges > 0:
+        data.edge_index = dropout_edge(data.edge_index, p=args.drop_edges)[0]
+
+    return data
+
+dataset = NeuroGraphDataset(root=root, name=args.dataset, transform=pre_transform_NeuroGraphDataset)
+
+print(f"Number of classes: {dataset.num_classes}")
+print(f"Number of graphs: {len(dataset)}")
 
 print("dataset loaded successfully!",args.dataset)
 labels = [d.y.item() for d in dataset]
@@ -76,11 +87,11 @@ criterion = torch.nn.CrossEntropyLoss()
 def train(train_loader):
     model.train()
     total_loss = 0
-    for data in train_loader:  
+    for data in train_loader:
         data = data.to(args.device)
         out = model(data)  # Perform a single forward pass.
         loss = criterion(out, data.y) 
-        total_loss +=loss
+        total_loss += loss
         loss.backward()
         optimizer.step() 
         optimizer.zero_grad()
