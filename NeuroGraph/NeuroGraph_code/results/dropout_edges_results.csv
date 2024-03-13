@@ -1,4 +1,7 @@
 dataset_name,drop_edge_prob,seed,model_name,best_val_epoch,best_val_acc,test_acc_best_val,test_acc
+Gender,1,0,Exphormer,59,85.18,74.07,78.7
+Gender,1,100,Exphormer,48,84.26,76.85,79.63
+Gender,1,500,Exphormer,,,,
 Age,1,0,Exphormer,45,50.94,53.27,52.34
 Age,1,100,Exphormer,21,46.23,51.4,47.66
 Age,1,500,Exphormer,43,53.77,42.06,42.06
@@ -29,3 +32,6 @@ Gender,0.5,2,NeuroGraph,56,88.89,89.81,83.33
 Age,0.5,0,NeuroGraph,89,55.14,53.52,51.17
 Age,0.5,1,NeuroGraph,82,54.21,53.52,49.77
 Age,0.5,2,NeuroGraph,96,57.01,53.05,50.23
+Activity,0.5,0,NeuroGraph,98,97.72,98.39,97.99
+Activity,0.5,1,NeuroGraph,92,97.58,98.05,97.72
+Activity,0.5,2,NeuroGraph,98,97.58,98.19,97.85

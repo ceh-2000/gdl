@@ -1,6 +1,6 @@
 import pandas as pd
 
-csv_name = "basic_results"
+csv_name = "dropout_edges_results"
 
 df = pd.read_csv(f"{csv_name}.csv")
 

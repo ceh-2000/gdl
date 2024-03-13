@@ -1,5 +1,6 @@
 dataset_name,drop_edge_prob,model_name,mean,std
 Activity,0.5,Exphormer,97.4,0.69
+Activity,0.5,NeuroGraph,97.85,0.14
 Activity,1.0,Exphormer,97.63,0.47
 Activity,1.0,NeuroGraph,97.76,0.08
 Age,0.5,Exphormer,49.53,2.81
@@ -8,4 +9,5 @@ Age,1.0,Exphormer,47.35,5.15
 Age,1.0,NeuroGraph,52.11,0.0
 Gender,0.5,Exphormer,79.94,1.41
 Gender,0.5,NeuroGraph,84.26,1.61
+Gender,1.0,Exphormer,79.16,0.66
 Gender,1.0,NeuroGraph,86.58,2.02

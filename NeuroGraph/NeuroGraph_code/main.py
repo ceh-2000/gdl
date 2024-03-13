@@ -136,7 +136,7 @@ for index in range(args.runs):
 
     # Basic MLP
     if args.attention == -1:
-        model = BasicMLP(input_dim=args.num_features, hidden_dim=64, output_dim=args.num_classes)
+        model = BasicMLP(input_dim=args.num_features, hidden_dim=64, output_dim=args.num_classes).to(args.device)
 
     # Basic Neurograph model
     elif args.attention == 0:
