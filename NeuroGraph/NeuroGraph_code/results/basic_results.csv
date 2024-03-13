@@ -1,0 +1,10 @@
+dataset_name,seed,model_name,best_val_epoch,best_val_acc,test_acc_best_val,test_acc
+Gender,0,NeuroGraph,98,90.74,88.89,88.43
+Gender,1,NeuroGraph,99,91.67,89.35,89.35
+Gender,2,NeuroGraph,65,89.81,90.74,87.04
+Age,0,NeuroGraph,72,57.01,53.52,52.58
+Age,1,NeuroGraph,54,56.07,51.64,47.89
+Age,2,NeuroGraph,26,54.21,53.05,50.23
+Activity,0,NeuroGraph,81,97.45,98.39,98.32
+Activity,1,NeuroGraph,60,97.45,98.32,97.92
+Activity,2,NeuroGraph,79,97.58,98.19,98.05

@@ -3,7 +3,7 @@ import numpy as np
 
 experiment_name = "NeuroGraph_drop_edge=0.0_dataset=HCPActivity_seed=0"
 
-df = pd.read_csv("data.csv", header=None)
+df = pd.read_csv("basic_results.csv", header=None)
 df["val_acc"] = pd.to_numeric(df[2].str.split(':').str[1])
 df["test_acc"] = pd.to_numeric(df[3].str.split(':').str[1])
 
