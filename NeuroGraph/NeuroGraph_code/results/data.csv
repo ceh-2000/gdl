@@ -1,100 +1,99 @@
-epoch: 0, loss: 0.120217, val_acc:0.5611, test_acc:0.593
-epoch: 1, loss: 0.112443, val_acc:0.6779, test_acc:0.7287
-epoch: 2, loss: 0.108387, val_acc:0.7624, test_acc:0.7589
-epoch: 3, loss: 0.106468, val_acc:0.804, test_acc:0.8146
-epoch: 4, loss: 0.104712, val_acc:0.843, test_acc:0.8341
-epoch: 5, loss: 0.102678, val_acc:0.8416, test_acc:0.8442
-epoch: 6, loss: 0.101444, val_acc:0.8698, test_acc:0.8825
-epoch: 7, loss: 0.100282, val_acc:0.8805, test_acc:0.8912
-epoch: 8, loss: 0.098682, val_acc:0.906, test_acc:0.9033
-epoch: 9, loss: 0.097228, val_acc:0.894, test_acc:0.8932
-epoch: 10, loss: 0.096608, val_acc:0.902, test_acc:0.8979
-epoch: 11, loss: 0.096185, val_acc:0.9087, test_acc:0.9147
-epoch: 12, loss: 0.094164, val_acc:0.906, test_acc:0.9167
-epoch: 13, loss: 0.093684, val_acc:0.9235, test_acc:0.9214
-epoch: 14, loss: 0.09132, val_acc:0.9369, test_acc:0.9389
-epoch: 15, loss: 0.090321, val_acc:0.9248, test_acc:0.9281
-epoch: 16, loss: 0.090089, val_acc:0.9356, test_acc:0.9295
-epoch: 17, loss: 0.089281, val_acc:0.9396, test_acc:0.9375
-epoch: 18, loss: 0.088191, val_acc:0.9342, test_acc:0.9349
-epoch: 19, loss: 0.08719, val_acc:0.9463, test_acc:0.951
-epoch: 20, loss: 0.08616, val_acc:0.9477, test_acc:0.9496
-epoch: 21, loss: 0.084522, val_acc:0.9383, test_acc:0.9308
-epoch: 22, loss: 0.084449, val_acc:0.949, test_acc:0.951
-epoch: 23, loss: 0.082502, val_acc:0.9477, test_acc:0.9422
-epoch: 24, loss: 0.081342, val_acc:0.949, test_acc:0.951
-epoch: 25, loss: 0.080842, val_acc:0.9463, test_acc:0.9476
-epoch: 26, loss: 0.07981, val_acc:0.9477, test_acc:0.9557
-epoch: 27, loss: 0.079311, val_acc:0.945, test_acc:0.9563
-epoch: 28, loss: 0.077452, val_acc:0.9463, test_acc:0.9496
-epoch: 29, loss: 0.07691, val_acc:0.9517, test_acc:0.9631
-epoch: 30, loss: 0.077404, val_acc:0.957, test_acc:0.9604
-epoch: 31, loss: 0.075479, val_acc:0.949, test_acc:0.9577
-epoch: 32, loss: 0.074907, val_acc:0.9584, test_acc:0.9584
-epoch: 33, loss: 0.073811, val_acc:0.953, test_acc:0.9604
-epoch: 34, loss: 0.073622, val_acc:0.9584, test_acc:0.9631
-epoch: 35, loss: 0.073124, val_acc:0.9503, test_acc:0.9543
-epoch: 36, loss: 0.071647, val_acc:0.957, test_acc:0.9684
-epoch: 37, loss: 0.070796, val_acc:0.9544, test_acc:0.9644
-epoch: 38, loss: 0.069367, val_acc:0.9517, test_acc:0.9644
-epoch: 39, loss: 0.068996, val_acc:0.957, test_acc:0.9664
-epoch: 40, loss: 0.068409, val_acc:0.949, test_acc:0.9577
-epoch: 41, loss: 0.068578, val_acc:0.953, test_acc:0.959
-epoch: 42, loss: 0.067282, val_acc:0.9611, test_acc:0.9718
-epoch: 43, loss: 0.066024, val_acc:0.9584, test_acc:0.9651
-epoch: 44, loss: 0.065358, val_acc:0.9624, test_acc:0.9651
-epoch: 45, loss: 0.064866, val_acc:0.9584, test_acc:0.9678
-epoch: 46, loss: 0.064644, val_acc:0.9664, test_acc:0.9651
-epoch: 47, loss: 0.063588, val_acc:0.9691, test_acc:0.9651
-epoch: 48, loss: 0.062212, val_acc:0.9584, test_acc:0.9637
-epoch: 49, loss: 0.061397, val_acc:0.9638, test_acc:0.9664
-epoch: 50, loss: 0.061165, val_acc:0.9544, test_acc:0.9657
-epoch: 51, loss: 0.060713, val_acc:0.9638, test_acc:0.9644
-epoch: 52, loss: 0.06011, val_acc:0.9624, test_acc:0.9725
-epoch: 53, loss: 0.05963, val_acc:0.9597, test_acc:0.9671
-epoch: 54, loss: 0.058964, val_acc:0.9624, test_acc:0.9691
-epoch: 55, loss: 0.058826, val_acc:0.9597, test_acc:0.9698
-epoch: 56, loss: 0.058581, val_acc:0.9624, test_acc:0.9725
-epoch: 57, loss: 0.056313, val_acc:0.9664, test_acc:0.9725
-epoch: 58, loss: 0.056862, val_acc:0.9624, test_acc:0.9745
-epoch: 59, loss: 0.055786, val_acc:0.9664, test_acc:0.9698
-epoch: 60, loss: 0.0556, val_acc:0.9718, test_acc:0.9731
-epoch: 61, loss: 0.054947, val_acc:0.9651, test_acc:0.9664
-epoch: 62, loss: 0.055772, val_acc:0.9651, test_acc:0.9731
-epoch: 63, loss: 0.054137, val_acc:0.9678, test_acc:0.9698
-epoch: 64, loss: 0.053671, val_acc:0.9718, test_acc:0.9738
-epoch: 65, loss: 0.052684, val_acc:0.9705, test_acc:0.9772
-epoch: 66, loss: 0.052516, val_acc:0.9664, test_acc:0.9711
-epoch: 67, loss: 0.051613, val_acc:0.9732, test_acc:0.9745
-epoch: 68, loss: 0.051798, val_acc:0.9705, test_acc:0.9765
-epoch: 69, loss: 0.051026, val_acc:0.9651, test_acc:0.9738
-epoch: 70, loss: 0.051365, val_acc:0.9651, test_acc:0.9725
-epoch: 71, loss: 0.050417, val_acc:0.9651, test_acc:0.9752
-epoch: 72, loss: 0.049398, val_acc:0.9664, test_acc:0.9691
-epoch: 73, loss: 0.048908, val_acc:0.9678, test_acc:0.9765
-epoch: 74, loss: 0.049298, val_acc:0.9664, test_acc:0.9738
-epoch: 75, loss: 0.048939, val_acc:0.9678, test_acc:0.9752
-epoch: 76, loss: 0.04877, val_acc:0.9691, test_acc:0.9772
-epoch: 77, loss: 0.047315, val_acc:0.9705, test_acc:0.9778
-epoch: 78, loss: 0.046959, val_acc:0.9678, test_acc:0.9778
-epoch: 79, loss: 0.047739, val_acc:0.9638, test_acc:0.9752
-epoch: 80, loss: 0.046779, val_acc:0.9705, test_acc:0.9758
-epoch: 81, loss: 0.046272, val_acc:0.9705, test_acc:0.9792
-epoch: 82, loss: 0.046779, val_acc:0.957, test_acc:0.9711
-epoch: 83, loss: 0.045824, val_acc:0.9638, test_acc:0.9792
-epoch: 84, loss: 0.044742, val_acc:0.9732, test_acc:0.9805
-epoch: 85, loss: 0.044235, val_acc:0.9638, test_acc:0.9772
-epoch: 86, loss: 0.043573, val_acc:0.9705, test_acc:0.9805
-epoch: 87, loss: 0.043518, val_acc:0.9705, test_acc:0.9772
-epoch: 88, loss: 0.044325, val_acc:0.9718, test_acc:0.9812
-epoch: 89, loss: 0.043541, val_acc:0.9691, test_acc:0.9765
-epoch: 90, loss: 0.042803, val_acc:0.9678, test_acc:0.9752
-epoch: 91, loss: 0.043106, val_acc:0.9691, test_acc:0.9752
-epoch: 92, loss: 0.042451, val_acc:0.9705, test_acc:0.9819
-epoch: 93, loss: 0.041816, val_acc:0.9691, test_acc:0.9738
-epoch: 94, loss: 0.04229, val_acc:0.9705, test_acc:0.9752
-epoch: 95, loss: 0.041165, val_acc:0.9732, test_acc:0.9792
-epoch: 96, loss: 0.041102, val_acc:0.9705, test_acc:0.9792
-epoch: 97, loss: 0.040418, val_acc:0.9745, test_acc:0.9799
-epoch: 98, loss: 0.040362, val_acc:0.9758, test_acc:0.9805
-epoch: 99, loss: 0.041272, val_acc:0.9691, test_acc:0.9785
+epoch: 0, loss: 0.046233, train_acc:0.492, val_acc:0.4722, test_acc:0.4815
+epoch: 1, loss: 0.044995, train_acc:0.6406, val_acc:0.4907, test_acc:0.6019
+epoch: 2, loss: 0.045564, train_acc:0.6631, val_acc:0.5093, test_acc:0.5926
+epoch: 3, loss: 0.045007, train_acc:0.7745, val_acc:0.5926, test_acc:0.7037
+epoch: 4, loss: 0.044225, train_acc:0.6883, val_acc:0.5463, test_acc:0.5972
+epoch: 5, loss: 0.042999, train_acc:0.7029, val_acc:0.6204, test_acc:0.6157
+epoch: 6, loss: 0.042759, train_acc:0.7931, val_acc:0.6481, test_acc:0.7176
+epoch: 7, loss: 0.043054, train_acc:0.7268, val_acc:0.6019, test_acc:0.6667
+epoch: 8, loss: 0.042746, train_acc:0.7878, val_acc:0.6574, test_acc:0.7454
+epoch: 9, loss: 0.041829, train_acc:0.6313, val_acc:0.5, test_acc:0.5463
+epoch: 10, loss: 0.041965, train_acc:0.8475, val_acc:0.6944, test_acc:0.7639
+epoch: 11, loss: 0.040428, train_acc:0.8249, val_acc:0.6852, test_acc:0.7315
+epoch: 12, loss: 0.042464, train_acc:0.8886, val_acc:0.7963, test_acc:0.8102
+epoch: 13, loss: 0.042214, train_acc:0.8793, val_acc:0.7222, test_acc:0.7963
+epoch: 14, loss: 0.041151, train_acc:0.8859, val_acc:0.7963, test_acc:0.7546
+epoch: 15, loss: 0.040613, train_acc:0.7865, val_acc:0.6574, test_acc:0.6944
+epoch: 16, loss: 0.040567, train_acc:0.935, val_acc:0.787, test_acc:0.8194
+epoch: 17, loss: 0.040618, train_acc:0.9416, val_acc:0.7685, test_acc:0.838
+epoch: 18, loss: 0.040986, train_acc:0.8077, val_acc:0.7037, test_acc:0.7315
+epoch: 19, loss: 0.040391, train_acc:0.9244, val_acc:0.8241, test_acc:0.8102
+epoch: 20, loss: 0.040155, train_acc:0.8833, val_acc:0.787, test_acc:0.787
+epoch: 21, loss: 0.038557, train_acc:0.931, val_acc:0.8241, test_acc:0.8241
+epoch: 22, loss: 0.04023, train_acc:0.935, val_acc:0.8148, test_acc:0.8472
+epoch: 23, loss: 0.039727, train_acc:0.9111, val_acc:0.7778, test_acc:0.7963
+epoch: 24, loss: 0.039203, train_acc:0.9456, val_acc:0.7685, test_acc:0.8194
+epoch: 25, loss: 0.038259, train_acc:0.9536, val_acc:0.8241, test_acc:0.8148
+epoch: 26, loss: 0.03921, train_acc:0.878, val_acc:0.787, test_acc:0.7824
+epoch: 27, loss: 0.038933, train_acc:0.9377, val_acc:0.8333, test_acc:0.8148
+epoch: 28, loss: 0.038346, train_acc:0.9297, val_acc:0.8241, test_acc:0.8056
+epoch: 29, loss: 0.038071, train_acc:0.9496, val_acc:0.8148, test_acc:0.838
+epoch: 30, loss: 0.039253, train_acc:0.9284, val_acc:0.8148, test_acc:0.8194
+epoch: 31, loss: 0.037899, train_acc:0.8833, val_acc:0.7778, test_acc:0.7639
+epoch: 32, loss: 0.038078, train_acc:0.9668, val_acc:0.8426, test_acc:0.8287
+epoch: 33, loss: 0.037658, train_acc:0.9403, val_acc:0.8519, test_acc:0.8333
+epoch: 34, loss: 0.03662, train_acc:0.9655, val_acc:0.8519, test_acc:0.8426
+epoch: 35, loss: 0.035556, train_acc:0.9642, val_acc:0.8333, test_acc:0.8102
+epoch: 36, loss: 0.036382, train_acc:0.9549, val_acc:0.8426, test_acc:0.8333
+epoch: 37, loss: 0.036311, train_acc:0.9496, val_acc:0.8426, test_acc:0.8102
+epoch: 38, loss: 0.037085, train_acc:0.9416, val_acc:0.8056, test_acc:0.7963
+epoch: 39, loss: 0.037058, train_acc:0.9536, val_acc:0.8426, test_acc:0.8287
+epoch: 40, loss: 0.036262, train_acc:0.9682, val_acc:0.8426, test_acc:0.838
+epoch: 41, loss: 0.035768, train_acc:0.9682, val_acc:0.8426, test_acc:0.8565
+epoch: 42, loss: 0.034539, train_acc:0.9695, val_acc:0.8519, test_acc:0.8333
+epoch: 43, loss: 0.034982, train_acc:0.9761, val_acc:0.8796, test_acc:0.8333
+epoch: 44, loss: 0.035997, train_acc:0.9721, val_acc:0.8796, test_acc:0.8519
+epoch: 45, loss: 0.035762, train_acc:0.9748, val_acc:0.8704, test_acc:0.838
+epoch: 46, loss: 0.035392, train_acc:0.9841, val_acc:0.8889, test_acc:0.8611
+epoch: 47, loss: 0.036428, train_acc:0.9721, val_acc:0.8056, test_acc:0.8565
+epoch: 48, loss: 0.034857, train_acc:0.9801, val_acc:0.8611, test_acc:0.8611
+epoch: 49, loss: 0.034461, train_acc:0.9655, val_acc:0.787, test_acc:0.8472
+epoch: 50, loss: 0.034977, train_acc:0.9775, val_acc:0.8796, test_acc:0.8519
+epoch: 51, loss: 0.034929, train_acc:0.9828, val_acc:0.8981, test_acc:0.8704
+epoch: 52, loss: 0.034415, train_acc:0.9801, val_acc:0.8611, test_acc:0.8565
+epoch: 53, loss: 0.034465, train_acc:0.9695, val_acc:0.8426, test_acc:0.838
+epoch: 54, loss: 0.034617, train_acc:0.9788, val_acc:0.8704, test_acc:0.8519
+epoch: 55, loss: 0.034692, train_acc:0.9841, val_acc:0.8611, test_acc:0.8796
+epoch: 56, loss: 0.034764, train_acc:0.9814, val_acc:0.8426, test_acc:0.875
+epoch: 57, loss: 0.034595, train_acc:0.9775, val_acc:0.8519, test_acc:0.8333
+epoch: 58, loss: 0.033386, train_acc:0.9801, val_acc:0.8611, test_acc:0.8704
+epoch: 59, loss: 0.034136, train_acc:0.9735, val_acc:0.8241, test_acc:0.8519
+epoch: 60, loss: 0.032417, train_acc:0.9828, val_acc:0.8796, test_acc:0.8519
+epoch: 61, loss: 0.033252, train_acc:0.9867, val_acc:0.8333, test_acc:0.8657
+epoch: 62, loss: 0.033293, train_acc:0.9708, val_acc:0.8704, test_acc:0.8611
+epoch: 63, loss: 0.033237, train_acc:0.9854, val_acc:0.8796, test_acc:0.8704
+epoch: 64, loss: 0.03201, train_acc:0.9867, val_acc:0.8519, test_acc:0.875
+epoch: 65, loss: 0.032004, train_acc:0.9881, val_acc:0.8889, test_acc:0.8704
+epoch: 66, loss: 0.032652, train_acc:0.9907, val_acc:0.8889, test_acc:0.8889
+epoch: 67, loss: 0.032472, train_acc:0.9907, val_acc:0.8796, test_acc:0.8796
+epoch: 68, loss: 0.031881, train_acc:0.9854, val_acc:0.8519, test_acc:0.8704
+epoch: 69, loss: 0.032044, train_acc:0.9801, val_acc:0.8519, test_acc:0.8657
+epoch: 70, loss: 0.032982, train_acc:0.9814, val_acc:0.8981, test_acc:0.8704
+epoch: 71, loss: 0.032227, train_acc:0.9881, val_acc:0.9074, test_acc:0.8194
+epoch: 72, loss: 0.03172, train_acc:0.9973, val_acc:0.8889, test_acc:0.875
+epoch: 73, loss: 0.030626, train_acc:0.9934, val_acc:0.8889, test_acc:0.8704
+epoch: 74, loss: 0.030697, train_acc:0.9907, val_acc:0.8889, test_acc:0.875
+epoch: 75, loss: 0.031592, train_acc:0.9841, val_acc:0.8426, test_acc:0.8611
+epoch: 76, loss: 0.030435, train_acc:0.9828, val_acc:0.8519, test_acc:0.8565
+epoch: 77, loss: 0.030395, train_acc:0.9881, val_acc:0.8519, test_acc:0.8611
+epoch: 78, loss: 0.031513, train_acc:0.992, val_acc:0.8796, test_acc:0.875
+epoch: 79, loss: 0.030257, train_acc:0.9947, val_acc:0.8889, test_acc:0.875
+epoch: 80, loss: 0.030592, train_acc:0.9947, val_acc:0.8796, test_acc:0.8704
+epoch: 81, loss: 0.029862, train_acc:0.9934, val_acc:0.8796, test_acc:0.875
+epoch: 82, loss: 0.030961, train_acc:0.9973, val_acc:0.8796, test_acc:0.8796
+epoch: 83, loss: 0.029625, train_acc:0.996, val_acc:0.8611, test_acc:0.8843
+epoch: 84, loss: 0.031134, train_acc:0.992, val_acc:0.8611, test_acc:0.875
+epoch: 85, loss: 0.029326, train_acc:0.9947, val_acc:0.8889, test_acc:0.8843
+epoch: 87, loss: 0.029758, train_acc:0.9934, val_acc:0.8611, test_acc:0.875
+epoch: 88, loss: 0.028807, train_acc:0.9947, val_acc:0.8796, test_acc:0.8889
+epoch: 89, loss: 0.028797, train_acc:0.9947, val_acc:0.8796, test_acc:0.8796
+epoch: 90, loss: 0.028538, train_acc:0.9907, val_acc:0.8796, test_acc:0.8796
+epoch: 91, loss: 0.029342, train_acc:0.996, val_acc:0.8796, test_acc:0.8796
+epoch: 92, loss: 0.028086, train_acc:0.996, val_acc:0.8889, test_acc:0.8796
+epoch: 93, loss: 0.028468, train_acc:0.9947, val_acc:0.8889, test_acc:0.8889
+epoch: 94, loss: 0.028744, train_acc:0.9947, val_acc:0.8796, test_acc:0.875
+epoch: 95, loss: 0.028155, train_acc:0.9973, val_acc:0.8889, test_acc:0.8981
+epoch: 96, loss: 0.028769, train_acc:0.992, val_acc:0.8426, test_acc:0.875
+epoch: 97, loss: 0.028042, train_acc:0.9947, val_acc:0.8611, test_acc:0.8796
+epoch: 98, loss: 0.027378, train_acc:0.9894, val_acc:0.8519, test_acc:0.8611
+epoch: 99, loss: 0.027977, train_acc:0.9973, val_acc:0.9167, test_acc:0.912

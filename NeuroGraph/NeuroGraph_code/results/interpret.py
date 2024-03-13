@@ -4,16 +4,17 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 
 model = "NeuroGraph"
-drop_edge = 0.5
-dataset = "HCPActivity"
-seed = 2
+drop_edge = 0.0
+dataset = "HCPGender"
+seed = 0
 
 experiment_name = f"{model}_drop_edge={drop_edge}_dataset={dataset}_seed={seed}"
 
 
 df = pd.read_csv("data.csv", header=None)
-df["val_acc"] = pd.to_numeric(df[2].str.split(':').str[1])
-df["test_acc"] = pd.to_numeric(df[3].str.split(':').str[1])
+df["train_acc"] = pd.to_numeric(df[2].str.split(':').str[1])
+df["val_acc"] = pd.to_numeric(df[3].str.split(':').str[1])
+df["test_acc"] = pd.to_numeric(df[4].str.split(':').str[1])
 
 best_val_idx = np.argmax(df["val_acc"])
 best_val = round(np.max(df["val_acc"])*100, 2)
@@ -35,12 +36,13 @@ df = (df * 100).round(2)
 
 sns.set(style="whitegrid")
 plt.figure(figsize=(8, 5))
+sns.lineplot(data=df["train_acc"], dashes=False, label='Train')
 sns.lineplot(data=df["val_acc"], dashes=False, label='Validation')
 sns.lineplot(data=df["test_acc"], dashes=False, label='Test')
 
 plt.xlabel('Epoch')
 plt.ylabel('Accuracy (%)')
-plt.title(f'Accuracy vs. epoch number for {model} trained on {dataset} with a seed of {seed}')
+plt.title(f'Accuracy vs. epoch number for {model}')
 
 # Save the plot to a new image with tight layout
 plt.tight_layout()
