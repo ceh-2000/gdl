@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+experiment_name = "NeuroGraph_drop_edge=0.0_dataset=HCPActivity_seed=0"
+
 df = pd.read_csv("data.csv", header=None)
 df["val_acc"] = pd.to_numeric(df[2].str.split(':').str[1])
 df["test_acc"] = pd.to_numeric(df[3].str.split(':').str[1])
@@ -19,3 +21,6 @@ print(f"Best test accuracy epoch: {best_test_idx}")
 print(f"Best test accuracy: {best_test}")
 
 print(f"Final test accuracy: {final_test}")
+
+df = df.drop(columns=[0, 1, 2, 3])
+df.head()

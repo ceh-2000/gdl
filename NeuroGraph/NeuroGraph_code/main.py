@@ -104,7 +104,9 @@ def train(train_loader):
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
-    return total_loss / len(train_loader.dataset)
+
+    train_acc = test(train_loader)
+    return total_loss / len(train_loader.dataset), train_acc
 
 
 @torch.no_grad()
@@ -132,8 +134,15 @@ for index in range(args.runs):
     torch.backends.cudnn.benchmark = False
     gnn = eval(args.model)
 
-    if args.attention == 0:
+    # Basic MLP
+    if args.attention == -1:
+        model = BasicMLP(input_dim=args.num_features, hidden_dim=64, output_dim=args.num_classes)
+
+    # Basic Neurograph model
+    elif args.attention == 0:
         model = ResidualGNNs(args,train_dataset,args.hidden,args.hidden_mlp,args.num_layers,gnn).to(args.device) ## apply GNN*
+
+    # Attention-based model
     elif args.attention == 1:
         model = ResidualGNNs2(args, train_dataset, hidden_channels=args.hidden, hidden=args.hidden_mlp,
                           num_layers=args.num_layers, GNN=gnn, k=0.6).to(args.device)
@@ -167,12 +176,12 @@ for index in range(args.runs):
     loss, test_acc = [], []
     best_val_acc, best_val_loss = 0.0, 0.0
     for epoch in range(args.epochs):
-        loss = train(train_loader)
+        loss, train_acc = train(train_loader)
         val_acc = test(val_loader)
         test_acc = test(test_loader)
         # if epoch%10==0:
         print(
-            "epoch: {}, loss: {}, val_acc:{}, test_acc:{}".format(epoch, np.round(loss.item(), 6), np.round(val_acc, 4),
+            "epoch: {}, loss: {}, train_acc:{}, val_acc:{}, test_acc:{}".format(epoch, np.round(loss.item(), 6), np.round(train_acc, 4), np.round(val_acc, 4),
                                                                   np.round(test_acc, 4)))
         val_acc_history.append(val_acc)
         if val_acc > best_val_acc:

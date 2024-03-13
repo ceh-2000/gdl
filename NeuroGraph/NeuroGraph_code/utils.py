@@ -13,6 +13,77 @@ from torch.nn import BatchNorm1d
 softmax = torch.nn.LogSoftmax(dim=1)
         # self.attention = Attention(input_dim1, hidden_channels)
 
+
+### BASELINE MLP FOR COMPARISON
+class BasicMLP(torch.nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super().__init__()
+        self.mlp = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.BatchNorm1d(hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim * 2),
+            nn.BatchNorm1d(hidden_dim * 2),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 2, hidden_dim *4),
+            nn.BatchNorm1d(hidden_dim *4),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 4, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 10, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 10, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(hidden_dim * 10, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 10, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 10, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 10, hidden_dim * 10),
+            nn.BatchNorm1d(hidden_dim * 10),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(hidden_dim * 10, hidden_dim * 6),
+            nn.BatchNorm1d(hidden_dim * 6),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 6, hidden_dim * 4),
+            nn.BatchNorm1d(hidden_dim * 4),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 4, hidden_dim * 2),
+            nn.BatchNorm1d(hidden_dim * 2),
+            nn.ReLU(),
+            nn.Linear(hidden_dim * 2, hidden_dim),
+            nn.BatchNorm1d(hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.BatchNorm1d(hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim//2),
+            nn.BatchNorm1d(hidden_dim//2),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(hidden_dim//2, hidden_dim//2),
+            nn.BatchNorm1d(hidden_dim//2),
+            nn.ReLU(),
+            nn.Linear((hidden_dim//2), output_dim),
+        )
+
+    def forward(self, data):
+        x, batch = data.x, data.batch
+        x = self.mlp(x)
+        x = global_add_pool(x, batch)
+        return x
+
+
+### ORIGINAL NEUROGRAPH MODEL
 class ResidualGNNs(torch.nn.Module):
     def __init__(self,args, train_dataset, hidden_channels,hidden, num_layers, GNN, k=0.6):
         super().__init__()
