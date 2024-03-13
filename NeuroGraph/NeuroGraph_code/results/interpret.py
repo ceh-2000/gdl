@@ -1,9 +1,17 @@
 import pandas as pd
 import numpy as np
+import seaborn as sns
+from matplotlib import pyplot as plt
 
-experiment_name = "NeuroGraph_drop_edge=0.0_dataset=HCPActivity_seed=0"
+model = "NeuroGraph"
+drop_edge = 0.5
+dataset = "HCPActivity"
+seed = 2
 
-df = pd.read_csv("basic_results.csv", header=None)
+experiment_name = f"{model}_drop_edge={drop_edge}_dataset={dataset}_seed={seed}"
+
+
+df = pd.read_csv("data.csv", header=None)
 df["val_acc"] = pd.to_numeric(df[2].str.split(':').str[1])
 df["test_acc"] = pd.to_numeric(df[3].str.split(':').str[1])
 
@@ -23,4 +31,17 @@ print(f"Best test accuracy: {best_test}")
 print(f"Final test accuracy: {final_test}")
 
 df = df.drop(columns=[0, 1, 2, 3])
-df.head()
+df = (df * 100).round(2)
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(8, 5))
+sns.lineplot(data=df["val_acc"], dashes=False, label='Validation')
+sns.lineplot(data=df["test_acc"], dashes=False, label='Test')
+
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy (%)')
+plt.title(f'Accuracy vs. epoch number for {model} trained on {dataset} with a seed of {seed}')
+
+# Save the plot to a new image with tight layout
+plt.tight_layout()
+plt.savefig(f'{experiment_name}.png', dpi=300)
