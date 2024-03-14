@@ -129,7 +129,7 @@ if __name__ == '__main__':
         custom_set_run_dir(cfg, run_id)
         set_printing()
         cfg.dataset.split_index = split_index
-        cfg.seed = seed #SEEEEEED
+        cfg.seed = 500 #seed #SEEEEEED
         cfg.run_id = run_id
         seed_everything(cfg.seed)
         auto_select_device()
